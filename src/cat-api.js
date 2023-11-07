@@ -8,7 +8,7 @@ axios.defaults.headers.common['x-api-key'] =
 
 const catInfoPlace = document.querySelector('.cat-info');
 
-export function fetchBreeds() {
+function fetchBreeds() {
   loaderSymbol.style.display = 'block';
   return axios.get('/breeds').then(resp => {
     if (!resp.status === 200) {
@@ -18,7 +18,7 @@ export function fetchBreeds() {
   });
 }
 
-export function fetchCatByBreed(e) {
+function fetchCatByBreed(e) {
   loaderSymbol.style.display = 'block';
   catInfoPlace.innerHTML = '';
   axios
@@ -60,7 +60,7 @@ function getMarkup([{ breeds, url }]) {
       </div>`;
 }
 
-export function errorNotiflix(error) {
+function errorNotiflix(error) {
   Notiflix.Notify.failure(
     'Oops! Something went wrong! Try reloading the page!',
     {
@@ -73,3 +73,5 @@ export function errorNotiflix(error) {
   );
   console.log(error);
 }
+
+export { fetchBreeds, fetchCatByBreed, errorNotiflix };
